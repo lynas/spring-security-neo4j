@@ -20,7 +20,10 @@ open class DBConfig(environment: Environment) : Neo4jConfiguration() {
     @Bean
     open fun getConfiguration() = org.neo4j.ogm.config.Configuration().apply {
         driverConfiguration()
-                .setDriverClassName("org.neo4j.ogm.drivers.http.driver.HttpDriver")
-                .uri = neo4jDB_URL
+                .setDriverClassName("org.neo4j.ogm.drivers.bolt.driver.BoltDriver")
+                .setConnectionPoolSize(150)
+                .uri = "bolt://neo4j:123456@localhost:7687"
     }
+
+
 }

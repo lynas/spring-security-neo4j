@@ -11,13 +11,14 @@ import org.springframework.stereotype.Service
 /**
  * Created by lynas on 9/9/2016
  */
-@Service("UserDetailsService")
-class UserDetailService(val appUserService: AppUserService) : UserDetailsService {
+@Service("userDetailsService")
+class UserDetailService(var appUserService: AppUserService) : UserDetailsService {
 
 
     override fun loadUserByUsername(userName: String): UserDetails {
         // todo need to fix to get in from db
         val appUser:AppUser? = appUserService.findById(48)
+
         /*val appUser: AppUser? = AppUser().apply {
             username = userName
             password = "$2a$10$3mUSOw6gya8AeNnzL7qiaO2p9qeko.rWVpRpRdZQ4SoICglyGQVHa"
