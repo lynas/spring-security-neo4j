@@ -2,7 +2,6 @@ package com.lynas.model
 
 import org.neo4j.ogm.annotation.GraphId
 import org.neo4j.ogm.annotation.NodeEntity
-import org.neo4j.ogm.annotation.Relationship
 
 /**
  * Created by LynAs on 7/23/2016
@@ -18,4 +17,10 @@ class AppUser {
     var username: String? = null
     var password: String? = null
     var authorities: String? = null
+
+    override fun toString(): String {
+        return "AppUser(id=$id, username=$username, password=$password, authorities=$authorities)"
+    }
+
+
 }

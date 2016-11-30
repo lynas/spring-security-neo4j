@@ -1,12 +1,9 @@
-/*
-
 package com.lynas.config
 
-import com.lynas.service.AppUserService
+import com.lynas.service.UserDetailService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.ScopedProxyMode
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -16,16 +13,10 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 
-*/
-/**
- * Created by sazzad on 9/8/16
- *//*
-
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@ComponentScan(basePackageClasses = arrayOf(AppUserService::class), scopedProxy = ScopedProxyMode.INTERFACES)
+@ComponentScan(basePackageClasses = arrayOf(UserDetailService::class))
 open class SecurityConfig (val userDetailService:UserDetailsService) : WebSecurityConfigurerAdapter(){
 
     @Autowired
@@ -43,4 +34,4 @@ open class SecurityConfig (val userDetailService:UserDetailsService) : WebSecuri
         .logout().permitAll()
     }
 }
-*/
+

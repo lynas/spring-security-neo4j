@@ -1,5 +1,7 @@
 package com.lynas.controller.view
 
+import com.lynas.model.AppUser
+import com.lynas.service.AppUserService
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import javax.servlet.http.HttpServletRequest
@@ -9,11 +11,12 @@ import javax.servlet.http.HttpServletRequest
  */
 
 @Controller
-class HomeController constructor() {
+class HomeController (val appUserService:AppUserService) {
 
     @RequestMapping(value = "/")
     fun home(request: HttpServletRequest): String {
-
+        val appUser:AppUser? = appUserService.findById(48)
+        println(appUser)
         return "home"
     }
 
