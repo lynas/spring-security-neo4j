@@ -2,6 +2,8 @@ package com.lynas.service
 
 import com.lynas.config.SpringSecurityUser
 import com.lynas.model.AppUser
+import org.springframework.context.annotation.Scope
+import org.springframework.context.annotation.ScopedProxyMode
 import org.springframework.security.core.authority.AuthorityUtils
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -12,7 +14,8 @@ import org.springframework.stereotype.Service
  * Created by lynas on 9/9/2016
  */
 @Service("userDetailsService")
-class UserDetailService(var appUserService: AppUserService) : UserDetailsService {
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
+open class UserDetailService(var appUserService: AppUserService) : UserDetailsService {
 
 
     override fun loadUserByUsername(userName: String): UserDetails {
