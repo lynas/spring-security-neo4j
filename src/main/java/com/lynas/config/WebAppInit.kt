@@ -8,7 +8,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * Created by LynAs on 23-Jan-16
  */
 @Configuration
-@ComponentScan(basePackages = arrayOf("com.lynas"))
+@ComponentScan("com.lynas")
 open class WebAppInit : AbstractAnnotationConfigDispatcherServletInitializer() {
     override fun getRootConfigClasses(): Array<Class<*>> {
         return arrayOf(RootConfig::class.java)

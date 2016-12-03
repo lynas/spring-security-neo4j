@@ -17,21 +17,22 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan(basePackageClasses = arrayOf(UserDetailService::class))
-open class SecurityConfig (val userDetailService:UserDetailsService) : WebSecurityConfigurerAdapter(){
+open class SecurityConfig(val userDetailService: UserDetailsService) : WebSecurityConfigurerAdapter() {
 
     @Autowired
-    fun configureGlobal(auth:AuthenticationManagerBuilder) {
+    fun configureGlobal(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(userDetailService).passwordEncoder(BCryptPasswordEncoder())
     }
 
-    override fun configure(http: HttpSecurity) {
-        http.authorizeRequests().antMatchers("/signup").permitAll()
-        .and()
-        .authorizeRequests().anyRequest().authenticated()
-        .and()
-        .formLogin().loginPage("/login").permitAll()
-        .and()
-        .logout().permitAll()
+    override fun configure(httpSecurity: HttpSecurity) {
+        httpSecurity
+                .authorizeRequests().antMatchers("/signup").permitAll()
+                .and()
+                .authorizeRequests().anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .logout().permitAll()
     }
 }
 

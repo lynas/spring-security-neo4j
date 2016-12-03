@@ -2,8 +2,6 @@ package com.lynas.service
 
 import com.lynas.config.SpringSecurityUser
 import com.lynas.model.AppUser
-import org.springframework.context.annotation.Scope
-import org.springframework.context.annotation.ScopedProxyMode
 import org.springframework.security.core.authority.AuthorityUtils
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -13,14 +11,13 @@ import org.springframework.stereotype.Service
 /**
  * Created by lynas on 9/9/2016
  */
-@Service("userDetailsService")
-@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Service
 open class UserDetailService(var appUserService: AppUserService) : UserDetailsService {
 
 
     override fun loadUserByUsername(userName: String): UserDetails {
         // todo need to fix to get in from db
-        val appUser:AppUser? = appUserService.findById(48)
+        val appUser: AppUser? = appUserService.loadUserByUsername(userName)
 
         /*val appUser: AppUser? = AppUser().apply {
             username = userName

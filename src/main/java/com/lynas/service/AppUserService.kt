@@ -5,7 +5,7 @@ import com.lynas.repo.AppUserRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-@Service("appUserService")
+@Service
 open class AppUserService(val appUserRepository: AppUserRepository) {
 
     @Transactional
