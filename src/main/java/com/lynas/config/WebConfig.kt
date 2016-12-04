@@ -5,6 +5,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.PropertySource
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
 import org.thymeleaf.dialect.IDialect
@@ -17,6 +18,7 @@ import java.util.*
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.lynas")
+@PropertySource("classpath:application.properties")
 open class WebConfig() {
 
 
